@@ -1,28 +1,19 @@
 import React, { useState } from 'react';
-import ITask from "../../../interfaces/ITask";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircle} from "@fortawesome/free-regular-svg-icons";
 import {faCircle as faCircleSolid } from "@fortawesome/free-solid-svg-icons";
 import {Simulate} from "react-dom/test-utils";
 import input = Simulate.input;
 
-interface ICompleteButton {
-    isCompleted: boolean;
-    changeStatus(): void;
-}
-
-interface IDescriptionForm {
-    isCompleted: boolean;
-    description: string;
-}
+import ITask from "../../../interfaces/ITask";
+import ICompleteButton from "../../../interfaces/ICompleteButton";
+import IDescriptionForm from "../../../interfaces/IDescriptionForm";
 
 function CompleteButton(props: ICompleteButton) {
     if (!props.isCompleted) {
-        // @ts-ignore
         return <FontAwesomeIcon onClick={props.changeStatus} icon={faCircle} />
     }
     else {
-        // @ts-ignore
         return <FontAwesomeIcon onClick={props.changeStatus} icon={faCircleSolid}/>
     }
 }
