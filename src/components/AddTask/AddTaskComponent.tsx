@@ -28,23 +28,20 @@ export default function AddTaskComponent() {
         e.preventDefault();
         const listDays = JSON.parse(localStorage.getItem('days') || '[]');
 
-        const result = listDays.filter((day: Day) => day.date === date)
+        const result = listDays.filter((day: Day) => {return new Date(day.date).getTime() === date.getTime()})
         const task = new Task(description);
 
         if (result.length === 0) {
             const day = new Day(date, [task])
-
             listDays.push(day);
             localStorage.setItem('days', JSON.stringify(listDays));
         }
 
         else {
-            result.tasks.push(task);
-            listDays.push(result);
+            listDays[listDays.indexOf(result[0])].tasks.push(task);
             localStorage.setItem('days', JSON.stringify(listDays));
         }
 
         navigate('/');
-
     }
 }
