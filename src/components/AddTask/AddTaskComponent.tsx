@@ -1,10 +1,12 @@
 import {FormEvent, useState} from "react";
 import Task from "../Main/Task/Task";
 import Day from "../Main/Day/Day";
+import {useNavigate} from "react-router-dom";
 
 export default function AddTaskComponent() {
     const [description, setDescription] = useState('');
     const [date, setDate] = useState(new Date());
+    const navigate = useNavigate();
 
     return(
         <div id='addTask' className={'container'}>
@@ -19,6 +21,8 @@ export default function AddTaskComponent() {
             </form>
         </div>
     )
+
+
 
     function submitForm(e: FormEvent) {
         e.preventDefault();
@@ -39,6 +43,8 @@ export default function AddTaskComponent() {
             listDays.push(result);
             localStorage.setItem('days', JSON.stringify(listDays));
         }
+
+        navigate('/');
 
     }
 }
