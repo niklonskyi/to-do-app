@@ -6,6 +6,8 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+import MainComponent from "./components/Main/MainComponent";
+import AddTaskComponent from "./components/AddTask/AddTaskComponent";
 
 
 const router = createBrowserRouter([
@@ -15,7 +17,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Main days={days}></Main>
+                element: <MainComponent/>
+            },
+            {
+                path: '/add',
+                element: <AddTaskComponent />
             }
         ]
     },
