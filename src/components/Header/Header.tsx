@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/Header.sass';
 import CurrentUser from "./CurrentUser";
+import {Link} from "react-router-dom";
 
 interface IHeaderProps {
     isLoggedIn: boolean;
@@ -11,9 +12,11 @@ function Header(props: IHeaderProps) {
     return (
         <div className="Header">
             <div className="logo">
-                <h1>
-                    To-Do-List
-                </h1>
+                <Link id='to-do-list-link' to={'/'}>
+                    <h1>
+                        To-Do-List
+                    </h1>
+                </Link>
             </div>
             <CurrentUser isLoggedIn={isLoggedIn}/>
         </div>
